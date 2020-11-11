@@ -84,10 +84,10 @@ def main():
     pygame.display.set_caption('Ares') 
 
     # This is our player's image/sprite
-    kitty = pygame.image.load('rocket_cat_sprite.png')
+    kitty = pygame.image.load('sprites/rocket_cat_sprite.png')
 
     # Asteroid image
-    ast_2 = pygame.image.load('rough_sprite_asteroid2.png')
+    ast_2 = pygame.image.load('sprites/rough_sprite_asteroid2.png')
 
     RUNNING = True
     PAUSED = False

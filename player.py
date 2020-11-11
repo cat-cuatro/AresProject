@@ -45,10 +45,11 @@ class player(object):
                 asteroidHit = True
             
             # Debugging laser
-            tol1 = pygame.Rect(xPos-xDiff, yPos-yDiff, 5, 5)
-            tol2 = pygame.Rect(xPos+xDiff, yPos+yDiff, 5, 5)
-            pygame.draw.rect(screen, (0, 255, 0), tol1)
-            pygame.draw.rect(screen, (0, 255, 0), tol2)
+            #tol1 = pygame.Rect(xPos-xDiff, yPos-yDiff, 5, 5)
+            #tol2 = pygame.Rect(xPos+xDiff, yPos+yDiff, 5, 5)
+            #pygame.draw.rect(screen, (0, 255, 0), tol1)
+            #pygame.draw.rect(screen, (0, 255, 0), tol2)
+
         return asteroidHit, beam
 
     def drawLasers(self, screen, beam): ## UNUSED, SEE DRAW LASERS IN MAIN

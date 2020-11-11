@@ -1,7 +1,7 @@
 import pygame, random
 class asteroids(object):
     def __init__(self, difficulty, WINDOW_HEIGHT, WINDOW_WIDTH):
-        self.sprite = pygame.image.load('rough_sprite_asteroid2.png')
+        self.sprite = pygame.image.load('sprites/rough_sprite_asteroid2.png')
         self.asteroidList = []
         self.wh = WINDOW_HEIGHT
         self.ww = WINDOW_WIDTH
