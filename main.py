@@ -5,6 +5,7 @@ import random
 import player as p
 import asteroids as a
 import menu as m
+import background as b
 
 WINDOW_HEIGHT = 1920
 WINDOW_WIDTH = 1080
@@ -41,9 +42,8 @@ def drawPlatforms(screen, rX, rY): # draws the platforms, given random x and y
         yPos += 100
         i += 1
 
-def drawSpace():
-    # Draw a cool space background
-    pass
+def drawSpace(background, screen):
+    screen.blit(background, (0,0))
 
 def shootingStars():
     # Emulate shooting star effects
@@ -70,15 +70,18 @@ def main():
     FPS = 144
     fpsClock = pygame.time.Clock()
 
+    
+    # Screen dimensions -> Make changeable via settings window?
+    screen = pygame.display.set_mode((WINDOW_HEIGHT, WINDOW_WIDTH))
+
     # Movement object tracks player position and processes keystrokes
     player = p.player(WINDOW_HEIGHT, WINDOW_WIDTH, SPRITE_OFFSET)
     # Asteroid object
     asteroids = a.asteroids(0, WINDOW_HEIGHT, WINDOW_WIDTH)
     # ESC activated Menu
     menu = m.menu(WINDOW_HEIGHT, WINDOW_WIDTH)
-
-    # Screen dimensions -> Make changeable via settings window?
-    screen = pygame.display.set_mode((WINDOW_HEIGHT, WINDOW_WIDTH))
+    # Scrolling background
+    space = b.space(screen)
 
     # Title
     pygame.display.set_caption('Ares') 
@@ -88,6 +91,9 @@ def main():
 
     # Asteroid image
     ast_2 = pygame.image.load('sprites/rough_sprite_asteroid2.png')
+
+    # Background image
+    bg = pygame.image.load('backgrounds/rough_background.png')
 
     RUNNING = True
     PAUSED = False
@@ -112,6 +118,8 @@ def main():
 
             # Re-draw each frame
             screen.fill(BLACK)
+            #drawSpace(bg, screen)
+            space.drawSpace(dt)
             drawLasers(screen, laserData[1])
             drawKittyUsingOffset(screen, kitty, player.retrievePosition())
             player.drawPlayerHitBox(screen)
@@ -120,6 +128,7 @@ def main():
             asteroids.checkAsteroidHealth(asteroids.impacted(player.retrievePosition()), laserData[0])
         else:
             menu.drawMenu(screen)
+
 
         dt = fpsClock.tick(FPS) # Game clock
         pygame.display.flip() # refresh screen each cycle
